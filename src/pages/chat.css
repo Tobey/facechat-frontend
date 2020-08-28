@@ -1,0 +1,25 @@
+
+  .subscriber {
+  
+  }
+  .publisher {
+
+  }
+
+  .OT_publisher, .OT_subscriber {
+    position: absolute !important;
+    /* border: 3px solid white; */
+    
+  }
+
+  .OT_publisher {
+    float: left;
+    border-radius: 5px !important;
+    left: 3px;
+    top: 3px;
+  } 
+  
+  #error {
+    color: red;
+  } 
+
