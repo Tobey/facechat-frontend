@@ -8,6 +8,7 @@ import Chat from './pages/chat';
 import Login from './pages/login';
 import Register from './pages/register';
 import Profile from './pages/profile';
+import NotFound from './pages/notfound';
 import { history } from './helpers/history';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -23,6 +24,8 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 
       <PrivateRoute exact  path="/chat/:influencer" component={ Chat } />
       <PrivateRoute  path="/profile/" component={ Profile } />
+
+      <Route path="" component={ NotFound } />
     </Switch>
 
   </Router>
