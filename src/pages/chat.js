@@ -253,7 +253,6 @@ class Chat extends React.Component {
     //     if (!ws || ws.readyState == WebSocket.CLOSED) this.connect(); //check if websocket instance is closed, if so call `connect` function.
     // };
 
-
   render() {
     {console.log('renderrrr', this.state)}
 
