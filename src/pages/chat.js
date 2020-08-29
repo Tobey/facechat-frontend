@@ -168,7 +168,9 @@ class Chat extends React.Component {
 
 
   handle_user_details = (data) => {
+
     if (typeof data.username != 'undefined' && typeof data.influencer != 'undefined') {
+
         this.setState({username: data.username, influencer: data.influencer})
 
     }
@@ -179,6 +181,7 @@ class Chat extends React.Component {
   handle_paytok_credentials = (data) => {
 
     if (typeof data.token != 'undefined' && typeof data.session_id != 'undefined' ) {
+      
       console.log('Joining session', data.session_id);
       this.setState({session: data.session_id, token: data.token})
 

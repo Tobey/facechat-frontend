@@ -3,7 +3,7 @@ import logo from './logo.svg';
 
 import Home from './components/Layout';
 
-import { Grid, Image, Card, Icon, Button, Container, Item, Divider, Header } from 'semantic-ui-react'
+import {Divider,  } from 'semantic-ui-react'
 
 
 class App extends React.Component {

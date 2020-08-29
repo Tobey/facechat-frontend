@@ -5,17 +5,12 @@ import  { NavLink,
 import { 
   Grid, 
   Image, 
-  Card, 
   Icon, 
-  Button, 
   Container, 
   Item, 
-  Divider,
   Header,
   Rating,
   Statistic,
-  Segment,
-  Progress
   } from 'semantic-ui-react'
 
 import { CircularProgressbar, buildStyles  } from 'react-circular-progressbar';
@@ -24,6 +19,8 @@ import Baddie from './baddie1.jpg';
 import Tana from './tana.jpg';
 import Rando from './profilepic.jpeg';
 import Burnes from './bernes.jpeg';
+
+import MobileButton from './Button'
 
 const Progressbar = () => (
   <CircularProgressbar
@@ -111,11 +108,11 @@ class ProfileLayout extends React.Component {
           <Grid.Row columns={1} centered>
               <Grid.Column verticalAlign='middle'>
               <NavLink to="/chat/">  
-                <Button  size="medium" color="blue"
+                <MobileButton  size="medium" color="blue"
                   fluid
                 >
                   Call to action
-                </Button>
+                </MobileButton>
               </NavLink>
          
               </Grid.Column>

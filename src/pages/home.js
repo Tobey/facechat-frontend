@@ -6,10 +6,8 @@
 import { createMedia } from '@artsy/fresnel'
 import PropTypes from 'prop-types'
 import React, { Component, createRef} from 'react'
-import  { NavLink,
-} from "react-router-dom"
+import  { NavLink} from "react-router-dom"
 import {
-  Button,
   Container,
   Divider,
   Grid,
@@ -24,6 +22,9 @@ import {
   Sticky,
   Ref
 } from 'semantic-ui-react'
+
+import MobileButton  from '../components/Button';
+
 
 const SemanticStaticUrl = 'https://react.semantic-ui.com'
 
@@ -64,10 +65,10 @@ const HomepageHeading = ({ mobile }) => {
         marginTop: mobile ? '0.5em' : '1.5em',
       }}
     />
-    <Button primary size='huge'>
+    <MobileButton primary size='huge'>
       Get Started
       <Icon name='right arrow' />
-    </Button>
+    </MobileButton>
   </Container>
   )
 }
@@ -123,14 +124,14 @@ class DesktopContainer extends Component {
                       <Menu.Item as='a'>Careers</Menu.Item>
                       <Menu.Item position='right'>
                       <NavLink to="/login/">  
-                        <Button inverted={!fixed}>
+                        <MobileButton inverted={!fixed} style={{cursor:'pointer'}}>
                           Log in
-                        </Button>
+                        </MobileButton>
                       </NavLink>  
                       <NavLink to="/register/">  
-                        <Button  inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
+                        <MobileButton  inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em', cursor: 'pointer'}}>
                           Sign Up
-                        </Button>
+                        </MobileButton>
                       </NavLink>  
                       </Menu.Item>
                     </Container>
@@ -196,12 +197,12 @@ class MobileContainer extends Component {
                     <Icon name='sidebar' />
                   </Menu.Item>
                   <Menu.Item position='right'>
-                    <Button as='a' inverted>
+                    <MobileButton as='a' inverted>
                       Log in
-                    </Button>
-                    <Button as='a' inverted style={{ marginLeft: '0.5em' }}>
+                    </MobileButton>
+                    <MobileButton as='a' inverted style={{ marginLeft: '0.5em' }}>
                       Sign Up
-                    </Button>
+                    </MobileButton>
                   </Menu.Item>
                 </Menu>
               </Container>
@@ -265,7 +266,7 @@ const HomepageLayout = () => {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign='center'>
-            <Button size='huge'>Check Them Out</Button>
+            <MobileButton size='huge'>Check Them Out</MobileButton>
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -303,9 +304,9 @@ const HomepageLayout = () => {
           art of doing nothing by providing massive amounts of whitespace and generic content that
           can seem massive, monolithic and worth your attention.
         </p>
-        <Button as='a' size='large'>
+        <MobileButton as='a' size='large'>
           Read More
-        </Button>
+        </MobileButton>
 
         <Divider
           as='h4'
@@ -324,9 +325,9 @@ const HomepageLayout = () => {
           it's really true. It took years of gene splicing and combinatory DNA research, but our
           bananas can really dance.
         </p>
-        <Button as='a' size='large'>
+        <MobileButton as='a' size='large'>
           I'm Still Quite Interested
-        </Button>
+        </MobileButton>
       </Container>
     </Segment>
 
