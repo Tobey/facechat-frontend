@@ -246,7 +246,7 @@ const HomepageLayout = () => {
         <Grid.Row>
           <Grid.Column width={8}>
             <Header as='h3' style={{ fontSize: '2em' }}>
-              We Help Influnecer connect with fans
+              We Help <b>Influencers</b> connect with <b>fans</b>
             </Header>
             <p style={{ fontSize: '1.33em' }}>
               Think Onlyfans but better
