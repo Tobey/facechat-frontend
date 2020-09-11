@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
+
+import
 
 class UserDetails extends Component{
 
@@ -38,7 +40,7 @@ class UserDetails extends Component{
                     defaultValue={values.email}
                     />
                 </Form.Field>
-                <Button onClick={this.saveAndContinue}>Save And Continue </Button>
+                <MobileButton onClick={this.saveAndContinue}>Save And Continue </MobileButton>
             </Form>
         )
     }

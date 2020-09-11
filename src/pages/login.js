@@ -1,10 +1,12 @@
 import React from 'react';
-import { Form, Checkbox, Button, Container, Segment, Header, Input } from 'semantic-ui-react'
+import { Form, Checkbox, Container, Segment, Header, Input } from 'semantic-ui-react'
 
 import { history } from '../helpers/history';
 import { Fetch } from '../helpers/auth-request';
 import { handleResponse } from '../helpers/handle-response';
 import { authenticationService } from '../services/auth.service';
+
+import MobileButton from '../components/Button'
 
 const style = {
     h1: {
@@ -101,21 +103,21 @@ const style = {
                     type='password' 
                     onChange={(e) => this.setState({password: e.target.value})} />
                 </Form.Field>
-                  <Form.Button
+                  <MobileButton
                     fluid
                     type='submit' 
                     disabled = {!(this.state.username && this.state.password)}
                     onClick={this.handleSubmit} >Submit
-                    </Form.Button>
+                    </MobileButton>
                 </Form>
 
-                <Button
+                <MobileButton
                     fluid
                     color='red'
                     type='submit' 
                     disabled = {!(this.state.username && this.state.password)}
                     onClick={this.handletest} >Test
-              </Button>
+              </MobileButton>
         </Container>
         );
       }

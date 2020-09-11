@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Button, List } from 'semantic-ui-react';
+import {  List } from 'semantic-ui-react';
+
+import MobileButton  from '../components/Button';
+
 
 class Confirmation extends Component{
     saveAndContinue = (e) => {
@@ -44,8 +47,8 @@ class Confirmation extends Component{
                     </List.Item>
                 </List>
 
-                <Button onClick={this.back}>Back</Button>
-                <Button onClick={this.saveAndContinue}>Confirm</Button>
+                <MobileButton onClick={this.back}>Back</MobileButton>
+                <MobileButton onClick={this.saveAndContinue}>Confirm</MobileButton>
             </div>
         )
     }

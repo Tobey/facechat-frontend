@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 
 import Publisher from '../components/Publisher';
 import Subscriber  from '../components/Subscriber';
-import { OTSession, OTStreams, preloadScript } from 'opentok-react';
+import { OTSession, OTStreams } from 'opentok-react';
 
 import ProfileLayout from '../components/Layout';
 
@@ -181,7 +181,7 @@ class Chat extends React.Component {
   handle_paytok_credentials = (data) => {
 
     if (typeof data.token != 'undefined' && typeof data.session_id != 'undefined' ) {
-      
+
       console.log('Joining session', data.session_id);
       this.setState({session: data.session_id, token: data.token})
 

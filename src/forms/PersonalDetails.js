@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Form, Button } from 'semantic-ui-react';
 import { throws } from 'assert';
 
+import MobileButton  from '../components/Button';
+
 class PersonalDetails extends Component{
     saveAndContinue = (e) => {
         e.preventDefault();
@@ -40,8 +42,8 @@ class PersonalDetails extends Component{
                 defaultValue={values.country}
                 />
             </Form.Field>
-            <Button onClick={this.back}>Back</Button>
-            <Button onClick={this.saveAndContinue}>Save And Continue </Button>
+            <MobileButton onClick={this.back}>Back</MobileButton>
+            <MobileButton onClick={this.saveAndContinue}>Save And Continue </MobileButton>
         </Form>
         )
     }
