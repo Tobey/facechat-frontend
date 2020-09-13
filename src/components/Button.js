@@ -5,7 +5,7 @@ import { Button } from 'semantic-ui-react'
 
 const MobileButton = (props) => {
   const defaultStyle = {
-      'curser': 'pointer',
+      'cursor': 'pointer',
   }
   const mandateStyle = Object.assign({}, props.style, defaultStyle);
     return <Button {...props} style={mandateStyle}> {props.children} </Button>
