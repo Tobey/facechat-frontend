@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
 
-import
 
-class UserDetails extends Component{
+class UserDetails extends Component {
 
     saveAndContinue = (e) => {
         e.preventDefault()
