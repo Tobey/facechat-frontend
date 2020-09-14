@@ -57,7 +57,7 @@ const HomepageHeading = ({ mobile }) => {
     />
     <Header
       as='h2'
-      content='A video streaming platform for social media infulencers'
+      content='A video streaming platform for social media influencers'
       inverted
       style={{
         fontSize: mobile ? '1.5em' : '1.7em',
