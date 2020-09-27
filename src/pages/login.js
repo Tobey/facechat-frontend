@@ -66,26 +66,6 @@ const style = {
          
     
   }
-
-  handletest = (e) => {
-    e.preventDefault();
-    Fetch('http://localhost:8002/api/user/me/')
-
-    const requestOptions = {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-  };
-
-    Fetch('http://localhost:8002/api/user/me/')
-    .then(handleResponse)
-    .then(data => { 
-      console.log('me')
-      console.log(data)
-    })
-  
-  }
-
-  
     render() {
       return (
         <Container>
@@ -107,17 +87,10 @@ const style = {
                     fluid
                     type='submit' 
                     disabled = {!(this.state.username && this.state.password)}
-                    onClick={this.handleSubmit} >Submit
+                    onClick={this.handleSubmit} >Login
                     </MobileButton>
                 </Form>
 
-                <MobileButton
-                    fluid
-                    color='red'
-                    type='submit' 
-                    disabled = {!(this.state.username && this.state.password)}
-                    onClick={this.handletest} >Test
-              </MobileButton>
         </Container>
         );
       }
