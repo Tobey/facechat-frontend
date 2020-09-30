@@ -1,21 +1,24 @@
 
 
 const getEnvVairables = () => {
+  console.log('GETTING ENV VARIABLES')
   let config = {}
 
   if (typeof (process.env.PAYTOK_URL) == 'undefined') {
     console.log("default PAYTOK_URL")
-    config['PAYTOK_URL'] = 'http://localhost:8002'
+    config['PAYTOK_URL'] = 'https://paytok.herokuapp.com'
   } else {
     config['PAYTOK_URL'] = process.env.PAYTOK_URL
   }
 
   if (typeof (process.env.PAYTOK_WS_URL) == 'undefined') {
     console.log("default PAYTOK_WS_URL")
-    config['PAYTOK_WS_URL'] = 'ws://localhost:8002'
+    config['PAYTOK_WS_URL'] = 'wss://paytok.herokuapp.com'
   } else {
     config['PAYTOK_WS_URL'] = process.env.PAYTOK_WS_URL
   }
+
+  console.log(config)
 
   return config
 }
