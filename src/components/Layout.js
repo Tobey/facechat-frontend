@@ -11,6 +11,7 @@ import {
   Header,
   Rating,
   Statistic,
+  Message
   } from 'semantic-ui-react'
 
 import { CircularProgressbar, buildStyles  } from 'react-circular-progressbar';
@@ -21,6 +22,8 @@ import Rando from './profilepic.jpeg';
 import Burnes from './bernes.jpeg';
 
 import MobileButton from './Button'
+
+import { apiService } from '../services/api.service';
 
 const Progressbar = () => (
   <CircularProgressbar
@@ -41,10 +44,28 @@ const Progressbar = () => (
 
 
 class ProfileLayout extends React.Component {
+  constructor(props) {
+    super(props);
+      this.state = {
+        error: null
+      }
+    }
 
     render() {
+
+      let message
+
+      if (this.state.error){
+        message = <Message negative floating> <Message.Header>{this.state.error}</Message.Header></Message>
+      } else {
+        message =  ''
+      }
       return (
         <Container >
+
+
+
+              {message}
           <Grid  centered verticalAlign='middle' divided='vertically'>
           {/* top  profile row  */}
           <Grid.Row 
@@ -107,13 +128,31 @@ class ProfileLayout extends React.Component {
           {/* Live Actions */}
           <Grid.Row columns={1} centered>
               <Grid.Column verticalAlign='middle'>
-              <NavLink to="/chat/">  
                 <MobileButton  size="medium" color="blue"
                   fluid
+                  onClick={
+                    () => {
+                      
+                      console.log('paying from profile ')
+                      const respose = apiService.payForSession(this.props.influencerUsername)
+
+                      respose.then(data => {
+                        if (typeof data.error !== 'undefined') {
+                        console.log('response !!!!! ---- ',data)
+                          this.setState({error: data.error})
+                          const that = this
+                          setTimeout(function() {
+                            that.setState({error: null})
+                          }, 2000);
+                      } 
+                      })
+                   
+
+                    }
+                  }
                 >
                   Call to action
                 </MobileButton>
-              </NavLink>
          
               </Grid.Column>
               

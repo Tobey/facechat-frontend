@@ -11,6 +11,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "dotenv": "^8.2.0",
     "jwt-decode": "^2.2.0",
     "opentok": "^2.10.0",
     "opentok-react": "^0.11.0",
@@ -25,7 +26,7 @@
     "websocket": "^1.0.31"
   },
   "scripts": {
-    "start": "PAYTOK_WS_URL=somethingwavey react-scripts start",
+    "start": "set REACT_APP_PAYTOK_URL=\"$(PAYTOK_URL)\" && set REACT_APP_PAYTOK_WS_URL=\"$(PAYTOK_WS_URL)\" && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

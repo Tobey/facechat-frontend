@@ -31,7 +31,8 @@ class Chat extends React.Component {
 
     this.serverHandlers  = {
       'user_details': this.handle_user_details,
-      'paytok_credentials': this.handle_paytok_credentials,
+      'publish': this.handle_paytok_credentials,
+      'subscribe': this.handle_paytok_credentials,
     }
 
     this.state = {
@@ -44,6 +45,7 @@ class Chat extends React.Component {
       username: null,
       isConnected: false,
       influencer: null,
+      error: null
     }
     
 
@@ -56,7 +58,7 @@ class Chat extends React.Component {
             data: event.connection.data,
             event: event.type,
             sessionId: this.state.session,
-            callable: 'connection_created',
+            action: 'connection_created',
 
           }
           console.log('sending it', data)
@@ -84,7 +86,7 @@ class Chat extends React.Component {
     this._isMounted = false;
     let data = {
       influencer: this.props.match.params.influencer,
-      callable: 'exit_influencer_page'
+      action: 'exit_influencer_page'
     }
     if (this.state.ws) {
         this.state.ws.next(data)
@@ -104,24 +106,8 @@ class Chat extends React.Component {
         return
       }
       console.log('chat auth.subscribe', auth)
-      authenticationService.refresh()
-      const ws_params = { 't': `Bearer ${auth.access}`}
-      const ws = wsService.createWebSocketConnection(config.PAYTOK_WS_URL, ws_params)
-      this.setState({ auth, ws }, () => {
-
-      ws.subscribe(
-          (data) => this.onWsEvent(data),
-          (err) => this.onWsClose(err),
-          () => this.onWsClose(),
-      );
-      let data = {
-        influencer: this.props.match.params.influencer,
-        callable: 'enter_influencer_page'
-      }
-      ws.next(data)
-      this.setState({ isConnected: true })
-
-      });
+      this.setState({auth})
+      this.connectToWS()
     })
 
     // authenticationService.auth.ws.send(data)
@@ -130,11 +116,32 @@ class Chat extends React.Component {
     console.log('connected to session', this.state)
   }
 
+  connectToWS = () => {
+    authenticationService.refresh()
+    const ws_params = { 't': `Bearer ${authenticationService.accessToken}`}
+    const ws = wsService.createWebSocketConnection(config.PAYTOK_WS_URL, ws_params)
+    this.setState({ ws }, () => {
+
+    ws.subscribe(
+        (data) => this.onWsEvent(data),
+        (err) => this.onWsClose(err),
+        () => this.onWsClose(),
+    );
+    let data = {
+      influencer: this.props.match.params.influencer,
+      action: 'enter_influencer_page'
+    }
+    ws.next(data)
+    this.setState({ isConnected: true })
+
+    });
+  }
+
   onWsEvent = (data) => {
     console.log('ws event', data)
 
-    if (typeof data.callable != 'undefined') {
-      let hander = this.serverHandlers[data.callable]
+    if (typeof data.action != 'undefined') {
+      let hander = this.serverHandlers[data.action]
       if (typeof hander != 'undefined') {
           hander(data)
       } else {
@@ -153,6 +160,10 @@ class Chat extends React.Component {
 
   onWsClose = () => {
     console.log('Socket closed')
+    const that = this
+    setTimeout(function() {
+      that.connectToWS()
+    }, 1000);
 
         //     console.log(
         //     `Socket is closed. Reconnect will be attempted in ${Math.min(
@@ -266,11 +277,13 @@ class Chat extends React.Component {
                       username={this.state.username}
                       influencerFirstName={this.state.influencer.user.first_name}
                       influencerLastName={this.state.influencer.user.last_name}
+                      influencerUsername={this.state.influencer.user.username}
                       category={this.state.influencer.category}
                       description1={this.state.influencer.description1}
                       description2={this.state.influencer.description2}
                       per_slot={this.state.influencer.per_slot}
                       slot={this.state.influencer.slot}
+                      error={this.state.error}
               />
 
        } else  {

@@ -1,4 +1,4 @@
-import { authenticationService} from '../services/auth.service';
+import { authenticationService } from '../services/auth.service';
 
 
 export function Fetch(url, options) {
