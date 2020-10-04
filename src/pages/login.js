@@ -32,8 +32,7 @@ const style = {
       if (authenticationService.currentUser) { 
         console.log('user ', authenticationService.currentUser)
         authenticationService.logout();
-        this.props.history.push('/chat/mayajama/');
-         
+        this.props.history.push('/');
       }
 
       this.state = {
@@ -88,6 +87,12 @@ const style = {
                     type='submit' 
                     disabled = {!(this.state.username && this.state.password)}
                     onClick={this.handleSubmit} >Login
+                    </MobileButton>
+                    <MobileButton
+                    fluid
+                    type='submit' 
+                    disabled = {!(this.state.username && this.state.password)}
+                    onClick={this.logout} >Logout (helper)
                     </MobileButton>
                 </Form>
 

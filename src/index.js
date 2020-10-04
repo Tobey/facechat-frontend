@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import HomepageLayout from './pages/home';
 import Chat from './pages/chat';
 import Login from './pages/login';
+import Logout from './pages/logout';
 import Register from './pages/register';
 import Profile from './pages/profile';
 import NotFound from './pages/notfound';
@@ -19,6 +20,7 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom'
     <Router history={history} >
     <Switch>
       <Route  path="/login/" component={ Login } />
+      <Route  path="/logout/" component={ Login } />
       <Route exact path="/" component={ HomepageLayout } />
       <Route  path="/register/" component={ Register } />
 
